@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initChatView();
 
         //Language, Dialogflow Client access token
-        final LanguageConfig config = new LanguageConfig("ja", "a2b52a5b0d4a4530ae26ea7efcdb87da");
+        final LanguageConfig config = new LanguageConfig("ja", "3951ee8d89604b7f8fd2483cefd7cb77");
         initService(config);
 
         //TTS
@@ -82,16 +82,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .build();
         //Set to chat view
         chatView.send(message);
-        sendRequest(chatView.getInputText());
+        //sendRequest(chatView.getInputText());
         Log.d("mes",chatView.getInputText());
-        /*
-        if (mediaPlayer == null){
+
+        if (mediaPlayer == null && chatView.getInputText().equals("音楽")){
             //Start Music
             audioPlay();
-        }else{
+        }else if(mediaPlayer != null && chatView.getInputText().equals("停止")){
             //Stop Music
             audioStop();
-        }*/
+        }
+        else{
+            sendRequest(chatView.getInputText());
+        }
         //Reset edit text
         chatView.setInputText("");
     }
